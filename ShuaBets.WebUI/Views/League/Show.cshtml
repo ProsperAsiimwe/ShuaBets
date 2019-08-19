@@ -1,0 +1,44 @@
+﻿@model ShuaBets.Domain.Entities.League
+
+@{
+    ViewBag.Title = Model.Name;
+    bool developer = PageData["isAdmin"];      
+}
+
+
+ <!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+        <ul class="breadcrumb">
+            <li class="item-home">
+
+                @Html.Bootstrap().ActionLink("Back", "Index", "League").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+            </li>
+        </ul>
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<div class="col-md-12">
+
+    <div class="rgb-contact-wrap margin-bottom30">
+
+        <div class="col-md-12">
+            <!--Contact Contant Start-->
+            <div class="rgb-contact-contant rgb-white-style">
+
+                @Html.Partial("Partials/_Summary", Model)
+
+            </div>
+            <!--Contact Contant End-->
+
+            <div id="activities" class="tab-pane fade">
+                <div class="tabs-content">
+                    @Html.Action("GetActivities", new { LeagueId = Model.LeagueId })
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

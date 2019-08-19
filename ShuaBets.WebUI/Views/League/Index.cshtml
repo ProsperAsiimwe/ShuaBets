@@ -1,0 +1,111 @@
+﻿@model ShuaBets.WebUI.Models.Leagues.LeagueListViewModel
+@{
+    ViewBag.Title = "Leagues";
+}
+
+ <!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+       
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<section>
+    <div class="container" style="overflow-x:scroll">
+        <!--Section Title Start-->
+        <h4 class="section-title border-top">
+            <span class="rgb-label theme-background">
+                <i class="lnr lnr-chart-bars"></i>
+            </span>
+            Leagues and competitions all over the world.
+           
+            @Html.Bootstrap().ActionLinkButton("Add New League", "New").Class("btn-1 theme-background add-calender-btn").AppendIcon("fa fa-plus").HtmlAttributes(new { style="background-color:green;color:white;"})
+        </h4>
+        <!--Section Title End-->
+        <div class="rgb-fixture-flilter-wrap">
+           
+            @Html.Partial("Partials/_SearchLeagues", Model.SearchModel)
+
+        </div>
+
+       
+            <div class="rgb-upcoming-fixture-wrap rgb-upcoming-fixture1 margin-bottom30">
+                <!--Upcoming Fixture Start-->
+                <table class="rgb-table-3 text-center table-responsive">
+                    <tr class="table-head darkgray-bg-head">
+                                              
+                        <th>
+                            <span>League / Competition</span>
+                        </th>
+                        <th>
+                            <span>Country</span>
+                        </th>
+
+                        <th class="tb-ha">
+                           
+                        </th>
+
+                        <th>
+                            <span>Actions</span>
+                        </th>
+
+                    </tr>
+
+
+                    @if (Model.Leagues.Count() > 0)
+                    {
+                        foreach (var item in Model.Leagues)
+                        {
+
+                            <tr>
+                                                              
+                                <td>
+                                    <p>@item.Name</p>
+                                </td>
+
+                                <td>
+                                    <p>@item.Country</p>
+                                </td>
+
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr class="rgb-tab-match-results">
+                                <td colspan="6">
+
+                                    <div class="info-contant-footer">
+                                        @Html.Bootstrap().ActionLinkButton("Edit", "Edit").RouteValues(new { LeagueId = item.LeagueId }).Style(ButtonStyle.Info).Class("btn-1 btn-small theme-background").HtmlAttributes(new { style = "background-color:blue;" })
+                                        @Html.Bootstrap().ActionLinkButton("Delete", "Delete").RouteValues(new { LeagueId = item.LeagueId }).Style(ButtonStyle.Danger).Class("btn-1 btn-small theme-background").HtmlAttributes(new { style="background-color:red;"})
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6">There are no records matching your search criteria</td>
+                        </tr>
+                    }
+
+                </table>
+
+
+                <!--Upcoming Fixture End-->
+            </div>
+
+     
+        <div class="clearfix">
+            <div class="pull-right">
+                <div class="pagination-panel">
+                    <div class="pagination-labels">@Model.PagingInfo.ItemsFrom to @Model.PagingInfo.ItemsTo of @Model.PagingInfo.TotalItems Leagues</div>
+                    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

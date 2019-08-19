@@ -1,0 +1,43 @@
+﻿@using ShuaBets.WebUI.Models.Account
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Console.cshtml";
+    string companyName = Settings.COMPANY_NAME;
+    string instr = "Enter your login details";
+}
+
+ <!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+      
+    </div>
+</div>
+<!--Inner Banner End-->
+
+
+<div class="rgb-contact-contant rgb-white-style">
+    <div class="page-header">
+        <div class="container">
+            <h1>@instr</h1>
+          
+        </div>
+    </div>
+</div>
+
+<div class="rgb-content-wrap">
+    <!--Blog Detail Page Start-->
+    <section class="contactus-page">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-8">
+
+                    @Html.Partial("Partials/_Login")
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>

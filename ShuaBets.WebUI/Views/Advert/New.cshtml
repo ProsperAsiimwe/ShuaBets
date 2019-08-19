@@ -1,0 +1,79 @@
+﻿@model ShuaBets.WebUI.Models.Adverts.AdViewModel
+@{
+    ViewBag.Title = "New Adverts";
+    bool isAdmin = User.IsInRole("Admin") || User.IsInRole("Developer");
+    string action, cancel_url, buttonText, instr, glyph;
+
+
+        cancel_url = Url.Action("Index");
+        action = "Create";
+        buttonText = "Create Advert";
+        instr = "Complete the form below and click Create to add a new Advert";
+        glyph = "fa fa-plus";
+        ViewBag.Title = "New Free Advert";
+   
+}
+
+<!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+
+        <ul class="breadcrumb">
+            <li class="item-home">
+
+                @Html.Bootstrap().ActionLink("Back", "Index", "Advert").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+            </li>
+        </ul>
+
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<div class="rgb-content-wrap">
+    <!--Blog Detail Page Start-->
+    <section class="contactus-page">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-8">
+
+                    @using (Html.BeginForm(action, "Advert", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()                       
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="kode-comment-form contact-form">
+                            <form method="post" id="commentform" class="comment-form">
+                                <div class="kode-left-comment-sec">
+                                  
+                                    <div class="col-md-6" style="margin-bottom:30px;">
+                                        @Html.LabelFor(m => m.AdImages)
+                                        @Html.TextBoxFor(p => p.AdImages, new { @multiple = "multiple", type = "file", id = "file-0", required = "" })
+                                        @Html.ValidationMessageFor(m => m.AdImages, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-submit">
+                                        <div class="col-md-6 ">
+                                            @*<button class="default-button submit btn-1 theme-background" type="submit">@buttonText</button>*@
+                                            @Html.Bootstrap().SubmitButton().Style(ButtonStyle.Success).ButtonBlock().Text(buttonText).AppendIcon(glyph).Class("default-button submit btn-1 theme-background")
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </form>
+                        </div>
+
+                    }
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>

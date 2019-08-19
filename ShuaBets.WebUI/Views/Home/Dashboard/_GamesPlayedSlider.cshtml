@@ -1,0 +1,74 @@
+﻿@model ShuaBets.WebUI.Models.Exclusive.ExclusiveListViewModel
+
+<div class="rgb-content-wrap">
+
+    <!--Fixture Slider Wrap Start-->
+    <div class="rgb-fixtures-slider-wrap">
+
+        <!--Fixture Slider Start-->
+        <div class="fixtures-slider">
+                   
+
+            @if (Model.ExclusiveTips.Count() > 0)
+            {
+                foreach (var item in Model.ExclusiveTips)
+                {
+
+                    if (item.Result != null && item.Status.ToString() == "Correct")
+                    {
+
+                        <div>
+                            <!--Fixture Contant Start-->
+                            <div class="rgb-fixtures-contant border-top">
+                              
+                                <h4 class="rgb-fixtures-date" style="color:green;">                                   
+                                    Tip :  <strong style="color:green;">@item.Tip</strong>  <i class="fa fa-thumbs-o-up"></i> 
+                                </h4>
+
+                                <div class="text" style="text-align:center;background-color:black;">
+                                    <!--Team 1 Start-->
+                                    <div class="rgb-team-1 pull-left">
+                                        <div class="team-meta-logo rgb-shadow">
+                                            <img src="~/Content/coreAssets/images/Teams/home.png" alt="" >
+                                            <br />
+                                         <strong style="color:white;">@item.HomeTeam</strong>   
+                                        </div>
+                                    </div>
+                                    <!--Team 1 End-->
+                                    <h5 class="rgb-opponanet" style="color:white;">VS</h5>
+                                    <!--Team 2 Start-->
+                                    <div class="rgb-team-1 pull-right">
+                                        <div class="team-meta-logo rgb-shadow">
+                                            <img src="~/Content/coreAssets/images/Teams/away.png" alt="" >
+                                            <br />
+                                          <strong style="color:white;">@item.AwayTeam</strong>  
+                                        </div>
+                                    </div>
+                                    <!--Team 1 End-->
+                                </div>
+                                <h4 class="rgb-fixtures-date" style="color:green;">
+                                   Result : <strong style="color:green;">@item.Result</strong> 
+                                </h4>
+                            </div>
+                            <!--Fixture Contant End-->
+                        </div>
+
+
+                    }
+
+
+                }
+            }
+
+            <div>
+
+            </div>
+
+        </div>
+        <!--Fixture Slider Start-->
+    </div>
+    <!--Fixture Slider Wrap End-->
+
+
+</div>
+  

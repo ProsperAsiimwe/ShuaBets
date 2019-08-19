@@ -1,0 +1,198 @@
+﻿@model ShuaBets.WebUI.Models.Free.FreeListViewModel
+@{
+    ViewBag.Title = "Free Tips";
+    bool isAdmin = User.IsInRole("Admin") || User.IsInRole("Developer");
+}
+
+<!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+
+        @*<ul class="breadcrumb">
+            <li class="item-home">
+
+                @Html.Bootstrap().ActionLink("Back", "Index", "ExclusiveTip").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+            </li>
+        </ul>*@
+
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<section>
+    <div class="container" style="overflow-x:scroll">
+        <!--Section Title Start-->
+        <h4 class="section-title border-top">
+            <span class="rgb-label theme-background">
+                <i class="lnr lnr-chart-bars"></i>
+            </span>
+            Access all the Free Tips.
+
+            @if (isAdmin)
+            {
+                @Html.Bootstrap().ActionLinkButton("Add New Tip", "New").Class("btn-1 theme-background add-calender-btn").AppendIcon("fa fa-plus").HtmlAttributes(new { style = "background-color:green;color:white;" })
+
+            }
+            else
+            {
+
+            }
+
+
+        </h4>
+        <!--Section Title End-->
+        <div class="rgb-fixture-flilter-wrap">
+
+            @Html.Partial("Partials/_SearchFreeTips", Model.SearchModel)
+
+        </div>
+
+      
+            <div class="rgb-upcoming-fixture-wrap rgb-upcoming-fixture1 margin-bottom30">
+                <!--Upcoming Fixture Start-->
+                <table class="rgb-table-3 text-center table-responsive">
+                    <tr class="table-head darkgray-bg-head">
+
+                        <th>
+                            <span>Date / Time</span>
+                        </th>
+                        <th>
+                            <span>Teams</span>
+                        </th>
+
+                        <th>
+                            <span>Tip</span>
+                        </th>
+
+                        <th>
+                            <span>Result</span>
+                        </th>
+
+                        <th>
+                            <span>League</span>
+                        </th>
+
+                        <th>
+                            <span>Status</span>
+                        </th>
+
+                      
+                    </tr>
+
+
+                    @if (Model.FreeTips.Count() > 0)
+                    {
+                        foreach (var item in Model.FreeTips)
+                        {
+                            var css = item.GetStatusCssClass();
+                            ButtonStyle button_css = ShuaBets.WebUI.Infrastructure.Helpers.FreeTipHelper.GetButtonStyle(css);
+
+                            <tr class="@css">
+
+                                <td>
+                                    <div style="color:red">
+                                        <p>@item.Date</p>
+                                    </div>       
+                                   
+                                </td>
+
+                                <td>
+
+                                    <!--Table Team opponanet Start-->
+                                    <div class="tb-opponanet-contant">
+                                        <!--Team 1 Start-->
+                                        <div class="tb-team-1">
+
+                                            <div style="color:red">
+                                                @item.HomeTeam
+                                            </div>   
+                                            
+                                        </div>
+                                        <!--Team 1 End-->
+                                        <div class="text">VS</div>
+                                        <!--Team 2 Start-->
+                                        <div class="tb-team-2">
+
+                                            <div style="color:red">
+                                                @item.AwayTeam
+                                            </div> 
+                                           
+                                        </div>
+
+                                        <!--Team 1 End-->
+                                    </div>
+                                    <!--Table Team opponanet End-->
+                                </td>
+
+                                <td>
+                                    <div style="color:green">
+                                        @item.Tip
+                                    </div>       
+                                   
+                                </td>
+
+                                <td>  
+                                    <div style="color:blue">
+                                        @(string.IsNullOrEmpty(item.Result) ? "Not Played Yet" : item.Result)
+                                    </div>                                  
+                                   
+                                </td>
+
+                                <td>
+                                        @item.League.Name             
+                                </td>
+
+                                <td>
+
+                                    <div style="color:indigo">                                       
+                                        @Html.Bootstrap().ActionLinkButton(item.Status.ToString(), "TipStatus").RouteValues(new { FreeTipId = item.FreeTipId }).Style(button_css).AppendIcon("fa fa-edit")
+                                    </div>     
+                                </td>
+
+                            </tr>
+
+                            <tr class="rgb-tab-match-results">
+                                <td colspan="6">
+
+                                    @if (isAdmin)
+                                    {
+                                        <div class="info-contant-footer">
+                                            @Html.Bootstrap().ActionLinkButton("Edit", "Edit").RouteValues(new { FreeTipId = item.FreeTipId }).Style(ButtonStyle.Success).Class("btn-1 btn-small theme-background").HtmlAttributes(new { style = "background-color:green;" })
+                                            @Html.Bootstrap().ActionLinkButton("Delete", "Delete").RouteValues(new { FreeTipId = item.FreeTipId }).Style(ButtonStyle.Danger).Class("btn-1 btn-small theme-background").HtmlAttributes(new { style = "background-color:red;" })
+                                        </div>
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                                                      
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6">There are no records matching your search criteria</td>
+                        </tr>
+                    }
+
+                </table>
+
+
+                <!--Upcoming Fixture End-->
+            </div>
+
+     
+        <div class="clearfix">
+            <div class="pull-right">
+                <div class="pagination-panel">
+                    <div class="pagination-labels">@Model.PagingInfo.ItemsFrom to @Model.PagingInfo.ItemsTo of @Model.PagingInfo.TotalItems Tips</div>
+                    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

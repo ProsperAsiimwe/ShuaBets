@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Contact " + Settings.COMPANY_NAME;
+    Layout = "~/Views/Shared/_Console.cshtml";
+    string companyName = Settings.COMPANY_NAME;
+}
+
+<div class="rgb-content-wrap">
+    <!--Blog Detail Page Start-->
+    <section class="contactus-page">
+        <div class="container">
+            <div class="row">
+
+                <div class=" col-md-offset-2 col-md-8">
+                    <!--Contact Wrp Start-->
+                    <div class="rgb-contact-wrap margin-bottom30">
+
+                        <div class="col-md-12">
+                            <!--Contact Contant Start-->
+                            <div class="rgb-contact-contant rgb-white-style">
+                                <h5>Contact information</h5>
+                                <p>In case you have some questions popped in your mind, Please email or even visit us. </p>
+                                <ul class="contact-meta-list">
+                                    <li><i class="lnr lnr-home"></i><em>Address: @Settings.COMPANY_ADDRESS</em></li>
+                                    <li><i class="lnr lnr-envelope"></i><em>@Settings.COMPANY_EMAIL</em></li>
+                                    <li><i class="lnr lnr-earth"></i><em>@Settings.COMPANY_URL</em></li>
+                                </ul>
+                            </div>
+                            <!--Contact Contant End-->
+                        </div>
+                    </div>
+                    <!--Contact Wrp End-->
+                    <!-- Kode Comment Form Start -->
+                    @*<div class="kode-comment-form contact-form">
+                        <form method="post" id="commentform" class="comment-form">
+                            <div class="kode-left-comment-sec">
+                                <div class="kf_commet_field">
+                                    <label class="fa fa-user"></label>
+                                    <input placeholder="Name*" name="author" type="text" value="" data-default="Name*" size="30">
+                                </div>
+                                <div class="kf_commet_field">
+                                    <label class="fa fa-envelope"></label>
+                                    <input placeholder="Email*" name="email" type="text" value="" data-default="Email*" size="30">
+                                </div>
+                                <div class="kf_commet_field full-width-kode">
+                                    <label class="fa fa-globe"></label>
+                                    <input placeholder="Website" name="url" type="text" value="" data-default="Website" size="30">
+                                </div>
+                            </div>
+                            <div class="kode-textarea">
+                                <label class="fa fa-paper-plane"></label>
+                                <textarea placeholder="Comments*" name="comment"></textarea>
+                            </div>
+                            <p class="form-submit"><input name="submit" type="submit" class="submit btn-1 theme-background" value="Post Comment"></p>
+                        </form>
+                    </div>*@
+                    <!-- Kode Comment Form End -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+@section Scripts {
+}

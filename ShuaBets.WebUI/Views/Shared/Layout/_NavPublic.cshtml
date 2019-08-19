@@ -1,0 +1,24 @@
+﻿@using ShuaBets.WebUI.Infrastructure.Helpers;
+
+<li></li>
+
+    <li>@Html.NavigationLink("Home", "Index", "Home")</li>
+
+    @*<li>
+        <a href="">Fixtures & results</a>
+        <ul class="children sub-menu">
+            <li>@Html.NavigationLink("Fixtures", "Fixtures", "Home")</li>
+            <li>@Html.NavigationLink("Results", "Results", "Home")</li>
+        </ul>
+    </li>*@
+  
+    
+    <li>@Html.Bootstrap().ActionLink("Exclusive Tips", "Index", "Registration").RouteValues(new { roleName = "members" })</li> 
+    <li>@Html.NavigationLink("Login", "Login", "Account")</li>
+    @*<li>@Html.NavigationLink("Become A Member", "New", "Registration")</li>*@  
+    <li>@Html.Bootstrap().ActionLink("Become A Member", "Index", "Registration").RouteValues(new { roleName = "members" })</li>
+    <li>@Html.NavigationLink("Contact", "Contact", "Home")</li>
+   
+   
+    @*<li>@Html.Bootstrap().ActionLinkButton("Login", "Login", "Home").HtmlAttributes(new { style = "background-color: #2B65EC; color: #fff" })</li>*@
+

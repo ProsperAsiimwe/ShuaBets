@@ -1,0 +1,66 @@
+﻿@model ShuaBets.Domain.Entities.League
+@{
+    ViewBag.Title = "Terminate League";
+}
+
+ <!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+
+        <ul class="breadcrumb">
+            <li class="item-home">
+
+                @Html.Bootstrap().ActionLink("Back", "Index", "League").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+            </li>
+        </ul>
+
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<div class="rgb-content-wrap">
+    <!--Blog Detail Page Start-->
+    <section class="contactus-page">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-8">
+
+                    <h5>By doing this you'll terminate this league and delete all tips that have been provided for this league</h5>
+
+                    <hr />
+                    <div class="panel-item-group">
+                        <div class="panel-item clearfix">
+                            <div class="col-sm-4 panel-item-label">League's Name</div>
+                            <div class="col-sm-8">@Model.Name</div>
+                        </div>
+                        <div class="panel-item clearfix">
+                            <div class="col-sm-4 panel-item-label">Country</div>
+                            <div class="col-sm-8">@Model.Country</div>
+                        </div>
+                        <div class="panel-item clearfix">
+                            <div class="col-sm-4 panel-item-label">Added on</div>
+                            <div class="col-sm-8">@Model.Added</div>
+                        </div>
+
+                    </div>
+
+                    <br /><hr />
+
+                    @using (Html.BeginForm("Destroy", "League", new { LeagueId = Model.LeagueId }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Bootstrap().SubmitButton().Text("Terminate League").Style(ButtonStyle.Danger).AppendIcon("fa fa-remove")
+                    }
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+

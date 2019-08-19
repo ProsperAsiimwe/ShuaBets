@@ -1,0 +1,36 @@
+﻿@model ShuaBets.WebUI.Models.Dashboard.TipStatsModel   
+
+                     <!--Featured Player Stats Start-->
+<div class="rgb-latest-stats">
+    <!--Widget Title 2 Start-->
+    <h6 class="widget-title2"><span>Quick Stats</span></h6>
+    <!--Widget Title 2 End-->
+    <ul class="rgb-table rgb-table-2" style="text-align:center;">
+        <li>
+            <div class="tb-player-goals">
+                <h6>Exclusive Tips</h6>
+            </div>
+            <div class="tb-played-match">
+                <h6>Winning Predictions</h6>
+            </div>
+            <div class="tb-win-matches">
+                <h6>Incorrect Predictions</h6>
+            </div>
+           
+         
+        </li>
+        <li>
+            <div class="tb-player-goals">
+                <p>@Model.TotalExclisuve</p>
+            </div>
+            <div class="tb-played-match">
+                <p>@Model.ExclCorrect</p>
+            </div>
+            <div class="tb-win-matches">
+                <p>@Model.ExclWrong</p>
+            </div>
+          
+        </li>
+    </ul>
+</div>
+<!--Featured Player Stats End-->

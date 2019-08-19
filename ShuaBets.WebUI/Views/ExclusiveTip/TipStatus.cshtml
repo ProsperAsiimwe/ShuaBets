@@ -1,0 +1,79 @@
+﻿@model ShuaBets.WebUI.Models.Exclusive.TipStatusViewModel
+@{
+    ViewBag.Title = "Tip Status";
+    string action, cancel_url, buttonText, instr, glyph;
+    bool isAdmin = PageData["isAdmin"];
+
+    cancel_url = Url.Action("Show", new { ExclusiveTipId = Model.ExclusiveTipId });
+    action = "UpdateTipStatus";
+    buttonText = "Update Tip";
+    instr = "Modify the details and click Update to apply changes";
+    glyph = "fa fa-thumbs-up";
+    ViewBag.Title = "Update League";
+}
+
+<!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+
+        <ul class="breadcrumb">
+            <li class="item-home">
+
+                @Html.Bootstrap().ActionLink("Back", "Index", "ExclusiveTip").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+            </li>
+        </ul>
+
+    </div>
+</div>
+<!--Inner Banner End-->
+
+
+<div class="rgb-content-wrap">
+    <!--Blog Detail Page Start-->
+    <section class="contactus-page">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-8">
+
+                    @using (var f = Html.Bootstrap().Begin(new Form(action, "ExclusiveTip").FormMethod(
+                       FormMethod.Post)))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.ExclusiveTipId)
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="kode-comment-form contact-form">
+                            <form method="post" id="commentform" class="comment-form">
+                                <div class="kode-left-comment-sec">
+
+                                    <div class="col-md-6">
+                                       @Html.Bootstrap().RadioButtonsFromEnumFor(p => p.Status)
+                                    </div>
+                                                                      
+                                    <div class="form-submit">
+                                        <div class="col-md-6 ">
+                                            <button class="default-button submit btn-1 theme-background" type="submit">@buttonText</button><span><i @glyph></i></span>
+                                            @*@Html.Bootstrap().SubmitButton().Style(ButtonStyle.Success).ButtonBlock().Text(buttonText).AppendIcon(glyph).Class("default-button submit btn-1 theme-background")*@
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </form>
+                        </div>
+
+                    }
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+

@@ -1,0 +1,293 @@
+﻿@model ShuaBets.WebUI.Models.Free.FreeListViewModel
+@{
+    ViewBag.Title = Settings.COMPANY_NAME;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string companyName = Settings.COMPANY_NAME;
+    string strCurrency = "KSh.";
+}
+
+
+<section>
+    <div class="container">
+
+           
+        <div class="row">
+            <div class="col-sm-8">
+                <!--Section Title Start-->
+                <h4 class="section-title border-top">
+                    <span class="rgb-label theme-background">
+                        <i class="lnr lnr-thumbs-up"></i>
+                    </span>
+                    Become a member and get our football betting tips ! All You Need is A Mobile Phone
+                </h4>
+                <!--Section Title End-->
+                <!--White Background Style Start-->
+                <div class="rgb-white-style margin-bottom">
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+
+                            <img src="@Url.Content("~/Content/coreAssets/images/ads/lipanampesa.png")" alt="">
+
+                            @*<span class="rgb-date"> <i class="lnr lnr-checkmark-circle" style="color:red;"></i>Access to Banker Tips </span>
+                            <span class="rgb-date"> <i class="lnr lnr-checkmark-circle" style="color:red;"></i>60+ Leagues </span>
+                            <span class="rgb-date"> <i class="lnr lnr-checkmark-circle" style="color:red;"></i>Tips all year round </span>
+                            <span class="rgb-date"> <i class="lnr lnr-checkmark-circle" style="color:red;"></i>Large community </span>
+                            <span class="rgb-date"> <i class="lnr lnr-checkmark-circle" style="color:red;"></i>Member only Picks </span>
+                            <span class="rgb-date"> <i class="lnr lnr-checkmark-circle" style="color:red;"></i><strong>SHUA WINS</strong></span>*@
+                        </div>
+                    </div>
+
+                    <br /><hr />
+
+                    <div class="row">
+
+                        <div class="col-md-4 col-sm-6">
+                            <!--Featured News Small Start-->
+                            <div class="rgb-featured-news rgb-featured-news-small">
+                                <figure class="rgb-overlay">
+                                    <span class="rgb-label1">WEEKLY TIPS</span>
+                                    <img src="~/Content/coreAssets/images/ads/1.png" alt="">
+                                </figure>
+                                <!--Featured Contant start-->
+                                <div class="rgb-featured-contant">
+                                    <!--Featured Title start-->
+                                    <h6 class="featured-title"><a href="">1,000 (@strCurrency)</a></h6>
+                                    <!--Featured Title End-->
+
+                                </div>
+                                <!--Featured Contant End-->
+                            </div>
+                            <!--Featured News Small End-->
+                        </div>
+
+
+                        <div class="col-md-4 col-sm-6">
+                            <!--Featured News Small Start-->
+                            <div class="rgb-featured-news rgb-featured-news-small">
+                                <figure class="rgb-overlay">
+                                    <span class="rgb-label1">MONTHLY TIPS</span>
+                                    <img src="~/Content/coreAssets/images/ads/2.png" alt="">
+                                </figure>
+                                <!--Featured Contant start-->
+                                <div class="rgb-featured-contant">
+                                    <!--Featured Title start-->
+                                    <h6 class="featured-title"><a href="">3,000 (@strCurrency)</a></h6>
+                                    <!--Featured Title End-->
+
+                                </div>
+                                <!--Featured Contant End-->
+                            </div>
+                            <!--Featured News Small End-->
+                        </div>
+
+                        <div class="col-md-4 col-sm-6">
+                            <!--Featured News Small Start-->
+                            <div class="rgb-featured-news rgb-featured-news-small">
+                                <figure class="rgb-overlay">
+                                    <span class="rgb-label1">YEARLY TIPS</span>
+                                    <img src="~/Content/coreAssets/images/ads/3.png" alt="">
+                                </figure>
+                                <!--Featured Contant start-->
+                                <div class="rgb-featured-contant">
+                                    <!--Featured Title start-->
+                                    <h6 class="featured-title"><a href="">30,000 (@strCurrency)</a></h6>
+                                    <!--Featured Title End-->
+                                    @*<div class="featured-footer">
+                                            <!--Date Label start-->
+                                            <h3 style="text-decoration:underline; text-align:center;">On MTN</h3>
+                                            <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Dial *165#</span>
+                                            <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Select send money</span>
+                                            <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Enter number 0785965214</span>
+                                            <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Enter Reference of "Monthly Tip"</span>
+                                            <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Deposit 2,000 @strCurrency on our account</span>
+                                            <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Confirm and enter your Mobile Money PIN.</span>
+                                            <!--Date Label End-->
+                                        </div>
+
+                                        <div class="featured-footer">
+                                            <!--Date Label start-->
+                                            <h3 style="text-decoration:underline; text-align:center;">On Airtel</h3>
+                                            <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Dial *165#</span>
+                                            <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Select send money</span>
+                                            <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Enter number 0704229784</span>
+                                            <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Enter Reference of "Monthly Tip"</span>
+                                            <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Deposit 2,000 @strCurrency on our account</span>
+                                            <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Confirm and enter your Mobile Money PIN.</span>
+                                            <!--Date Label End-->
+                                        </div>*@
+                                </div>
+                                <!--Featured Contant End-->
+                            </div>
+                            <!--Featured News Small End-->
+                        </div>
+
+                    </div>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <span class="rgb-date"> <i class="lnr lnr-checkmark-circle" style="color:red;"></i>Wait for our reply with your unique password.</span>
+                            <span class="rgb-date"> <i class="lnr lnr-checkmark-circle" style="color:red;"></i>To access our Exclusive tips, just Log in with your phone number and unique code. </span>
+
+                            <h3 style="text-decoration:underline; text-align:center;">Disclaimer</h3>
+                            <h2 style="font-style:italic; text-align:center;">Betting is addictive and can be psychologically harmful.</h2>
+                        </div>
+                    </div>
+
+                </div>
+                <!--White Background Style End-->
+
+            </div>
+            <!--Side Bar Wrap Start-->
+            <div class="col-sm-4">
+                <div class="kode-sidebar-element">
+                    <!--Next Match Start-->
+                    <div class="widget widget-next-match">
+                        <!--Section Title Start-->
+                        <h4 class="section-title border-top">
+                            <span class="rgb-label theme-background">
+                                <i class="lnr lnr-star"></i>
+                            </span>
+                            Free Expert Picks
+                        </h4>
+
+
+                        <!--Section Title End-->
+                      
+                            <!--Next Match Start-->
+                            @*<td class="rgb-next-match">*@
+
+                                <table class="rgb-table-3 text-center table-responsive">
+                                    <tr class="table-head darkgray-bg-head">
+
+                                        <th class="tb-date">
+                                            <span>Date</span>
+                                        </th>
+                                        <th class="tb-theam">
+                                            <span>Teams</span>
+                                        </th>
+
+                                        <th class="tb-result-area tb-ha">
+                                            <span>Tip</span>
+                                        </th>
+
+                                    </tr>
+
+                                    @if (Model.FreeTips.Count() > 0)
+                                    {
+                                        foreach (var item in Model.FreeTips)
+                                        {
+
+                                            <tr>
+
+                                                <td class="tb-date">                                                  
+                                                    <p>@item.Date.ToShortDateString()</p>
+                                                </td>
+                                                
+                                                <td class="tb-theam">
+                                                    <!--Table Team opponanet Start-->
+                                                    <div class="tb-opponanet-contant">
+                                                        <!--Team 1 Start-->
+                                                        <div class="tb-team-1">
+
+                                                            <div style="color:red">
+                                                                @item.HomeTeam
+                                                            </div>
+
+                                                        </div>
+                                                        <!--Team 1 End-->
+                                                        <div class="text">VS</div>
+                                                        <!--Team 2 Start-->
+                                                        <div class="tb-team-2">
+
+                                                            <div style="color:red">
+                                                                @item.AwayTeam
+                                                            </div>
+
+                                                        </div>
+
+                                                        <!--Team 1 End-->
+                                                    </div>
+                                                    <!--Table Team opponanet End-->
+                                                </td>
+
+                                                <td class="tb-result-area tb-ha">
+                                                    <p>@item.Tip</p>
+                                                </td>
+
+
+
+                                            </tr>
+                                                                 
+
+                                        }
+                                    }
+
+                                </table>
+
+
+
+
+
+                                    @*<div class="opponanet-contant">
+
+
+                @if (Model.FreeTips.Count() > 0)
+                {
+                    foreach (var item in Model.FreeTips)
+                    {
+
+                         <!--Team 1 Start-->
+                        <div class="rgb-team-1 pull-left">
+                            <h6><a href="">@item.HomeTeam</a></h6>
+                        </div>
+                <!--Team 1 End-->
+                        <div class="text">VS</div>
+
+                <!--Team 2 Start-->
+                        <div class="rgb-team-1 pull-right">
+                            <h6><a href="">@item.AwayTeam</a></h6>
+                        </div>
+
+                        <div class="text">@item.Tip</div>
+
+
+                    }
+                }
+
+
+
+            </div>*@
+                        <br /><hr />
+
+                                    <div class="kode-search">
+
+                                        @Html.Bootstrap().ActionLinkButton("Become a member and access all tips", "Index", "Registration").RouteValues(new { roleName = "members" }).Class("btn-1").HtmlAttributes(new { style= "background-color: #54C571; color:white;" })
+                                    </div>
+
+                        <br /><hr />
+
+                        @Html.Action("GetTipStats", "Home")
+
+                       <br /><br /><br /><br /><br /><br /><br /><hr />
+
+                        @Html.Action("GetAds", "Home")
+                                              
+                      
+                            <!--Next Match End-->
+                        </div>
+                    </div>
+                    <!--Next Match End-->
+
+
+                </div>
+                <!--Side Bar Wrap End-->
+            </div>
+        </div>
+
+</section>
+
+@section Scripts {
+}

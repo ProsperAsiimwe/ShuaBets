@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Dashboard - " + Settings.COMPANY_NAME;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string companyName = Settings.COMPANY_NAME;
+    bool isAdmin = User.IsInRole("Admin") || User.IsInRole("Developer");
+    bool isMember = PageData["isMember"];
+}
+
+ <!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+
+        <ul class="breadcrumb">
+            <li class="item-home">
+
+                @if (isAdmin)
+                {
+                    <h4 style="color:white">Quick Statistics</h4>
+                }
+                else
+                {
+                    <h4 style="color:white">Exclusive Tips</h4>
+                }
+
+               
+            </li>
+        </ul>
+
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<div class="rgb-content-wrap">
+    <!--Blog Detail Page Start-->
+    <section class="contactus-page">
+        <div class="container">
+            <div class="row">
+
+                @if (isAdmin)
+                {
+                    @Html.Action("GetRegStats", "Users")
+                    @Html.Action("GetTipStats", "League")
+                }
+                else if(isMember)
+                {
+                    @Html.Action("ShowAllTips", "ExclusiveTip")
+                }
+
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+@section Scripts {
+}

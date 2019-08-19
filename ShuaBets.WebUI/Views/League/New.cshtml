@@ -1,0 +1,96 @@
+﻿@model ShuaBets.WebUI.Models.Leagues.LeagueViewModel
+
+@{
+    string action, cancel_url, buttonText, instr, glyph;
+    bool isAdmin = PageData["isAdmin"];
+
+    if (Model.LeagueId > 0)
+    {
+        cancel_url = Url.Action("Show", new { LeagueId = Model.LeagueId });
+        action = "Update";
+        buttonText = "Update League";
+        instr = "Modify the details and click Update to apply changes";
+        glyph = "fa fa-thumbs-up";
+        ViewBag.Title = "Update League";
+    }
+    else
+    {
+        cancel_url = Url.Action("Index");
+        action = "Create";
+        buttonText = "Create League";
+        instr = "Complete the form below and click Create to add a new League";
+        glyph = "fa fa-plus";
+        ViewBag.Title = "New League";
+    }
+}
+
+ <!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+
+        <ul class="breadcrumb">
+            <li class="item-home">
+               
+                @Html.Bootstrap().ActionLink("Back", "Index", "League").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+            </li>          
+        </ul>
+
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<div class="rgb-content-wrap">
+    <!--Blog Detail Page Start-->
+    <section class="contactus-page">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-8">
+
+                    @using (var f = Html.Bootstrap().Begin(new Form(action, "League").FormMethod(
+                     FormMethod.Post)))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.LeagueId)
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="kode-comment-form contact-form">
+                            <form method="post" id="commentform" class="comment-form">
+                                <div class="kode-left-comment-sec">
+
+                                    <div class="col-md-6">       
+                                        @f.FormGroup().TextBoxFor(p => p.Name).Placeholder().Class("default-input").Label()                                
+                                        @*@Html.Bootstrap().TextBoxFor(m => m.Name).Placeholder().PrependIcon("fa fa-futbol-o").ShowValidationMessage(true).Class("default-input").Label()*@
+                                    </div>
+
+                                    <div class="col-md-6" style="margin-bottom:30px;">   
+                                        @f.FormGroup().TextBoxFor(p => p.Country).Placeholder().Class("default-input").Label()                                                                            
+                                        @*@Html.Bootstrap().TextBoxFor(m => m.Country).Placeholder().PrependIcon("fa fa-flag").ShowValidationMessage(true).Class("default-input").Label()*@
+                                    </div>
+
+
+                                    <div class="form-submit">
+                                        <div class="col-md-6 ">
+                                            <button class="default-button submit btn-1 theme-background" type="submit">@buttonText</button>
+                                            @*@Html.Bootstrap().SubmitButton().Style(ButtonStyle.Success).ButtonBlock().Text(buttonText).AppendIcon(glyph).Class("default-button submit btn-1 theme-background")*@
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </form>
+                        </div>
+
+                    }
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,84 @@
+﻿@model ShuaBets.WebUI.Models.Dashboard.MemberStatsModel
+
+<div class="col-md-12">
+
+
+    <!--Widget Navigation Start-->
+    <div class="widget widget-navbar">
+        <h4 class="widget-title">Below are the statistics for @Settings.COMPANY_NAME Members</h4>
+        <!--Featured Player Stats Start-->
+        <div class="rgb-latest-stats">
+            <!--Widget Title 2 Start-->
+            <h1 class="widget-title2" style="text-align:center;"><span>Registration/Subscription</span></h1>
+            <!--Widget Title 2 End-->
+            <ul class="rgb-table rgb-table-2">
+                <li>
+                    <div class="tb-player-goals" style="text-align:center;">
+                        <span><i class="fa fa-users"></i></span>
+                        <br />
+                        <h6>Total Members</h6>
+                    </div>
+
+                    <div class="tb-player-goals" style="text-align:center; color:blue;">
+                        <span><i class="fa fa-address-book-o"></i></span>
+                        <br />
+                        <h6>New Members</h6>
+                    </div>
+
+                    <div class="tb-player-goals" style="text-align:center; color:green;">
+                        <span><i class="fa fa-thumbs-o-up"></i></span>
+                        <br />
+                        <h6>Active Subscriptions</h6>
+                    </div>
+
+                    <div class="tb-played-match" style="text-align:center; color:red;">
+                        <span><i class="fa fa-thumbs-o-down"></i></span>
+                        <br />
+                        <h6>Expired Subscriptions</h6>
+                    </div>
+
+                    <div class="tb-played-match" style="text-align:center; color:red;">
+                        <span><i class="fa fa-question-circle"></i></span>
+                        <br />
+                        <h6>Active Subscription With Inactive Accounts </h6>
+                    </div>
+
+                    <div class="tb-played-match" style="text-align:center; color:red;">
+                        <span><i class="fa fa-question-circle"></i></span>
+                        <br />
+                        <h6>Expired Subscription With Active Accounts</h6>
+                    </div>
+
+
+                </li>
+                <li>
+                    <div class="tb-player-goals" style="text-align:center;">
+                        <p style="color:orange;">@Model.TotalRequests</p>
+                    </div>
+                    <div class="tb-player-goals" style="text-align:center;">
+                        <p style="color:blue;">@Model.TotalNewMember</p>
+                    </div>
+                    <div class="tb-player-goals" style="text-align:center;">
+                        <p style="color:green;">@Model.TotalActive</p>
+                    </div>
+                    <div class="tb-played-match" style="text-align:center;">
+                        <p style="color:red;">@Model.TotalExpired</p>
+                    </div>
+                    <div class="tb-played-match" style="text-align:center;">
+                        <p style="color:red;">@Model.ActiveInactive</p>
+                    </div>
+                    <div class="tb-played-match" style="text-align:center;">
+                        <p style="color:red;">@Model.ExpiredActive</p>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Widget Navigation End-->
+
+</div>
+
+
+<br /><br /><br /><hr />
+

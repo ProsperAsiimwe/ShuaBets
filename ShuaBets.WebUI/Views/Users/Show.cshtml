@@ -1,0 +1,53 @@
+﻿@using ShuaBets.WebUI.Infrastructure.Helpers
+@model ShuaBets.Domain.Entities.ApplicationUser
+@{
+    ViewBag.Title = "Account Details";
+    string roleName = PageData["roleName"];
+
+    //bool developer = (bool)ViewBag.Developer;
+    bool developer = User.IsInRole("Developer");
+    var helper = new UserHelper(Model);
+    string[] roles = helper.GetUserRoles();
+}
+
+ <!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title for for @Model.FullName</h3>
+        <ul class="breadcrumb">
+            <li class="item-home">
+                @Html.Bootstrap().ActionLink("Back", "Index", "Users").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+            </li>
+
+            <li>@Html.Bootstrap().ActionLink("Edit Profile", "Edit").RouteValues(new { id = Model.DisplayId }).AppendIcon("glyphicon glyphicon-user").HtmlAttributes(new { title = "Edit", style = "color:white" })</li>
+            <li>@Html.Bootstrap().ActionLink("Reset password", "ResetPassword").RouteValues(new { id = Model.DisplayId }).AppendIcon("fa fa-lock").HtmlAttributes(new { title = "Reset", style = "color:white" })</li>
+            <li>@Html.Bootstrap().ActionLink("Delete User", "Delete").RouteValues(new { id = Model.DisplayId }).AppendIcon("fa fa-user-times").HtmlAttributes(new { title = "Delete", style = "color:white" })</li>
+
+        </ul>
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<div class="col-md-12">
+
+    <div class="rgb-contact-wrap margin-bottom30">
+
+        <div class="col-md-12">
+            <!--Contact Contant Start-->
+            <div class="rgb-contact-contant rgb-white-style">
+
+                @Html.Partial("Partials/_Summary", Model)
+
+            </div>
+            <!--Contact Contant End-->
+
+         
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

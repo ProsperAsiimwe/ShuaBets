@@ -1,0 +1,37 @@
+﻿@model ShuaBets.WebUI.Models.Adverts.AdListViewModel
+
+<div class="rgb-content-wrap">
+
+    <!--Fixture Slider Wrap Start-->
+    <div class="rgb-fixtures-slider-wrap">
+
+        <!--Fixture Slider Start-->
+        <div class="fixtures-slider" style="text-align:center;">
+
+            <div id="auto">
+                @if (Model.Adverts.Count() > 0)
+                {
+                    foreach (var item in Model.Adverts)
+                    {
+                      
+                            <img class="img-responsive" src="@Url.Content(string.Format("~/Content/Adverts/{0}",item.FileName))" alt="" 
+                                 style="max-height:350px;
+                                        max-width:400px;
+                                        padding:0px; ">
+                      
+                    }
+                }
+
+            </div>
+           
+
+        </div>
+
+    </div>
+
+</div>
+
+ 
+
+
+           

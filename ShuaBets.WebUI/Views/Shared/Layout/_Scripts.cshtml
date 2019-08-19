@@ -1,0 +1,159 @@
+﻿@*@Scripts.Render("~/bundles/jquery?v=1.0")
+@Html.Partial("Forms/_JQueryVal")
+@Scripts.Render("~/bundles/bootstrap?v=1.0")
+@Scripts.Render("~/bundles/sitescripts?v=1.0")*@
+
+
+@Html.Partial("Forms/_JQueryVal")
+@Scripts.Render("~/bundles/sitescripts")
+
+<!-- Map API JS FILES -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCamjh0yNXf7r7pv4PaOOW5xv8H7HaXQ8I&amp;callback=initMap"></script>
+
+<script>
+			jQuery(document).on('ready', function() {
+				$('.odometer').appear(function(e) {
+					var odo = $(".odometer");
+					odo.each(function() {
+						var countNumber = $(this).attr("data-count");
+						$(this).html(countNumber);
+					});
+				});
+			});
+</script>
+
+<script>
+	$(document).ready(function() {
+
+	    $(".blog-post-content").shorten();
+
+	    //Override function
+
+	    //$(".blog-post-content").shorten({
+	    //    "showChars": 200
+	    //});
+
+
+	    //$(".blog-post-content").shorten({
+	    //    "showChars": 150,
+	    //    "moreText": "See More",
+	    //});
+
+	    //$(".blog-post-content").shorten({
+	    //    "showChars": 50,
+	    //    "moreText": "See More",
+	    //    "lessText": "Less",
+	    //});
+
+	});
+</script>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 3000); // Change image every 3 seconds
+}
+</script>
+
+
+
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("myAdSlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += "active";
+  setTimeout(showSlides, 1000); // Change image every 3 seconds
+}
+</script>
+
+
+
+<script type="text/javascript">
+      $(document).ready(function () {
+
+        $('#default').bbslider();
+
+        $('#auto').bbslider({auto: true, timer: 3000, controls: true, loop: true, pauseOnHit: false});
+
+        $('#pager').bbslider({pager: true, pagerWrap: '#pagination-wrapper'});
+
+        $('#controls').bbslider({controls: true, loop: false});
+
+        $('#none').bbslider({controls: true, transition: 'none'});
+
+        $('#fade').bbslider({controls: true, transition: 'fade', duration: 1000});
+
+        $('#slide').bbslider({controls: true, transition: 'slide', duration: 1000});
+
+        $('#slideVert').bbslider({controls: true, transition: 'slideVert', duration: 1000});
+
+        $('#blind').bbslider({controls: true, transition: 'blind', duration: 1000});
+
+        $('#mask').bbslider({controls: true, transition: 'mask', maskImage: 'images/mask.png', duration: 1000, maskSteps: 23});
+
+        $('#carousel-none').bbslider({controls: true, transition: 'none', carousel: 3, carouselMove: 2});
+
+        $('#carousel-fade').bbslider({controls: true, transition: 'fade', duration: 1000, carousel: 3, carouselMove: 2});
+
+        $('#carousel-slide').bbslider({controls: true, transition: 'slide', duration: 1000, carousel: 3, carouselMove: 2});
+
+        var callBefore = function () {
+          var pCount = $('#callback').data('pCount');
+          var pIndex = $('#callback').data('pIndex');
+          var panel = pIndex + 1;
+          $('#call-log').append('<p>Panel ' + panel + ' of ' + pCount + ' total panels has ended.</p>');
+        };
+        var callAfter = function () {
+          var pCount = $('#callback').data('pCount');
+          var pIndex = $('#callback').data('pIndex');
+          var panel = pIndex + 1;
+          $('#call-log').append('<p>Panel ' + panel + ' of ' + pCount + ' total panels has started.</p>');
+        };
+
+        $('#callback').bbslider({controls: true, callbackBefore: callBefore, callbackAfter: callAfter});
+
+        $('#update').bbslider({pager: true, pagerWrap: '#update-pager', pageInfo: true, infoWrap: '#update-info', controls: true});
+        $('#add-slides').click(function (e) {
+          var wrapper = $('#update');
+          for (var i = 0; i < 10; i++) {
+            wrapper.append('<div><img src="http://lorempixel.com/507/338/" alt="placeholder" width="507" height="338" /></div>');
+          }
+          e.preventDefault();
+        });
+        $('#update-slider').click(function (e) {
+          $('#update').bbslider('update');
+          e.preventDefault();
+        });
+
+        $('#touch').bbslider({controls: false, touch: true, transition: 'slide', touchoffset: 50});
+
+        var rsz = function () {
+          $('.bbslider-wrapper').bbslider('update');
+        }; // end resize
+        $(window).resize(rsz);
+        $(window).on('load', rsz);
+      });
+</script>

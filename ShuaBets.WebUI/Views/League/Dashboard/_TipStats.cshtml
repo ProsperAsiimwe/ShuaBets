@@ -1,0 +1,156 @@
+﻿@model ShuaBets.WebUI.Models.Dashboard.TipStatsModel
+
+<div class="col-md-12">
+
+
+    <!--Widget Navigation Start-->
+    <div class="widget widget-navbar">
+        <h4 class="widget-title">Below are the statistics for your Exclusive Tips predictions</h4>
+        <!--Featured Player Stats Start-->
+        <div class="rgb-latest-stats">
+            <!--Widget Title 2 Start-->
+            <h1 class="widget-title2" style="text-align:center;"><span>Exclusive Tips</span></h1>
+            <!--Widget Title 2 End-->
+            <ul class="rgb-table rgb-table-2">
+                <li>
+                    <div class="tb-player-goals" style="text-align:center;">
+                        <span><i class="fa fa-futbol-o"></i></span>
+                        <br />
+                        <h6>Total Games</h6>
+                    </div>
+
+                    <div class="tb-player-goals" style="text-align:center; color:orange;">
+                        <span><i class="fa fa-question-circle-o"></i></span>
+                        <br />
+                        <h6>Pending Prediction(s)</h6>
+                    </div>
+
+                    <div class="tb-played-match" style="text-align:center; color:green;">
+                        <span><i class="fa fa-thumbs-o-up"></i></span>
+                        <br />
+                        <h6>Correct Prediction(s)</h6>
+                    </div>
+
+                    <div class="tb-played-match" style="text-align:center; color:red;">
+                        <span><i class="fa fa-thumbs-o-down"></i></span>
+                        <br />
+                        <h6>Wrong Prediction(s)</h6>
+                    </div>
+                </li>
+                <li>
+                    <div class="tb-player-goals" style="text-align:center;">
+                        <p style="color:orange;">@Model.TotalExclisuve</p>
+                    </div>
+
+                    <div class="tb-player-goals" style="text-align:center;">
+                        <p style="color:orange;">@Model.ExclPending</p>
+                    </div>
+                    <div class="tb-played-match" style="text-align:center;">
+                        <p style="color:green;">@Model.ExclCorrect</p>
+                    </div>
+                    <div class="tb-played-match" style="text-align:center;">
+                        <p style="color:red;">@Model.ExclWrong</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Widget Navigation End-->
+
+</div>
+
+
+<br /><br /><br /><hr />
+
+
+<div class="col-md-12">
+
+    <!--Widget Navigation Start-->
+    <div class="widget widget-navbar">
+        <h4 class="widget-title">Below are the statistics for your Free Tips predictions</h4>
+        <!--Featured Player Stats Start-->
+        <div class="rgb-latest-stats">
+            <!--Widget Title 2 Start-->
+            <h1 class="widget-title2" style="text-align:center;"><span>Free Tips</span></h1>
+            <!--Widget Title 2 End-->
+            <ul class="rgb-table rgb-table-2">
+                <li>
+
+                    <div class="tb-player-goals" style="text-align:center;">
+                        <span><i class="fa fa-futbol-o"></i></span>
+                        <br />
+                        <h6>Total Games</h6>
+                    </div>
+
+                    <div class="tb-player-goals" style="text-align:center; color:orange;">
+                        <span><i class="fa fa-question-circle-o"></i></span>
+                        <br />
+                        <h6>Pending Prediction(s)</h6>
+                    </div>
+
+                    <div class="tb-played-match" style="text-align:center; color:green;">
+                        <span><i class="fa fa-thumbs-o-up"></i></span>
+                        <br />
+                        <h6>Correct Prediction(s)</h6>
+                    </div>
+
+                    <div class="tb-played-match" style="text-align:center; color:red;">
+                        <span><i class="fa fa-thumbs-o-down"></i></span>
+                        <br />
+                        <h6>Wrong Prediction(s)</h6>
+                    </div>
+                </li>
+                <li>
+                    <div class="tb-player-goals" style="text-align:center;">
+                        <p style="color:orange;">@Model.TotalFree</p>
+                    </div>
+
+                    <div class="tb-player-goals" style="text-align:center;">
+                        <p style="color:orange;">@Model.FreePending</p>
+                    </div>
+                    <div class="tb-played-match" style="text-align:center;">
+                        <p style="color:green;">@Model.FreeCorrect</p>
+                    </div>
+                    <div class="tb-played-match" style="text-align:center;">
+                        <p style="color:red;">@Model.FreeWrong</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Widget Navigation End-->
+
+</div>
+
+
+
+<br /><br /><br /><hr />
+
+
+@*<div class="col-md-12">
+
+        <!--Widget Navigation Start-->
+        <div class="widget widget-navbar">
+
+            <!--Featured Player Stats Start-->
+            <div class="rgb-latest-stats">
+                <!--Widget Title 2 Start-->
+                <h1 class="widget-title2" style="text-align:center;"><span>Latest Activity</span></h1>
+                <!--Widget Title 2 End-->
+
+
+                @foreach (var item in Model.GetLatestActivity())                            {
+
+                            <p>@Html.Raw(item.Description.Replace(Environment.NewLine, "<br />"))</p>
+
+                            <span class="date"><i class="fa fa-calendar-o"></i>@item.Recorded.ToString("dd/MM/yyyy HH:mm")</span>
+                            <span class="user"><i class="fa fa-user"></i>@(item.RecordedBy != null ? item.RecordedBy.FullName : "System")</span>
+
+                }
+
+            </div>
+        </div>
+        <!--Widget Navigation End-->
+
+    </div>*@
+

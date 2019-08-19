@@ -1,0 +1,36 @@
+﻿@using ShuaBets.WebUI.Infrastructure.Helpers;
+<li>   
+    @Html.Bootstrap().ActionLink("Dashboard", "Index", "HomeAdmin").AppendIcon("fa fa-home")
+</li>
+<li>   
+    @Html.Bootstrap().ActionLink("Free Tips", "Index", "FreeTip").AppendIcon("fa fa-fire")
+</li>
+
+<li>  
+    @Html.Bootstrap().ActionLink("Exclusive Tips", "Index", "ExclusiveTip").AppendIcon("fa fa-fire")
+</li>
+
+<li>   
+    @Html.Bootstrap().ActionLink("Leagues", "Index", "League").AppendIcon("fa fa-futbol-o")
+</li>
+
+<li>
+    @Html.Bootstrap().ActionLink("Adverts", "Index", "Advert").AppendIcon("fa fa-newspaper-o ")
+</li>
+
+<li>
+   @Html.Bootstrap().ActionLink("Members", "Index", "Users").RouteValues(new { roleName = "members" }).AppendIcon("fa fa-users")
+</li>
+
+<li>
+    @Html.Bootstrap().ActionLink("Admins", "Index", "Users").RouteValues(new { roleName = "admins" }).AppendIcon("fa fa-address-book")
+</li>
+
+
+<li>
+    <a href="">Account <i class="fa fa-arrow-down"></i></a>
+    <ul class="children sub-menu">
+       
+        <li> @Html.Bootstrap().ActionLink("Change password", "ChangePwd", "Account").AppendIcon("fa fa-lock")</li>
+    </ul>
+</li>

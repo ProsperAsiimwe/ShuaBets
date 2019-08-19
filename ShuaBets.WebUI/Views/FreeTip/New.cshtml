@@ -1,0 +1,130 @@
+﻿@model ShuaBets.WebUI.Models.Free.FreeViewModel
+
+@{
+    string action, cancel_url, buttonText, instr, glyph;
+    bool isAdmin = PageData["isAdmin"];
+
+    if (Model.FreeTipId > 0)
+    {
+        cancel_url = Url.Action("Show", new { FreeTipId = Model.FreeTipId });
+        action = "Update";
+        buttonText = "Update Tip";
+        instr = "Modify the details and click Update to apply changes";
+        glyph = "fa fa-thumbs-up";
+        ViewBag.Title = "Update Free Tip";
+    }
+    else
+    {
+        cancel_url = Url.Action("Index");
+        action = "Create";
+        buttonText = "Create Tip";
+        instr = "Complete the form below and click Create to add a new Tip";
+        glyph = "fa fa-plus";
+        ViewBag.Title = "New Free Tip";
+    }
+}
+
+ <!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+
+        <ul class="breadcrumb">
+            <li class="item-home">
+               
+                @Html.Bootstrap().ActionLink("Back", "Index", "FreeTip").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+            </li>          
+        </ul>
+
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<div class="rgb-content-wrap">
+    <!--Blog Detail Page Start-->
+    <section class="contactus-page">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-8">
+
+                    @using (var f = Html.Bootstrap().Begin(new Form(action, "FreeTip").FormMethod(
+                     FormMethod.Post)))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.FreeTipId)
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="kode-comment-form contact-form">
+                            <form method="post" id="commentform" class="comment-form">
+                                <div class="kode-left-comment-sec">
+
+                                    <div class="col-md-6">       
+                                        @f.FormGroup().TextBoxFor(p => p.HomeTeam).Placeholder().Class("default-input").Label()                      
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        @f.FormGroup().TextBoxFor(p => p.AwayTeam).Placeholder().Class("default-input").Label()
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        @f.FormGroup().TextBoxFor(p => p.Tip).Placeholder().Class("default-input").Label()
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        @f.FormGroup().TextBoxFor(p => p.Result).Placeholder().Class("default-input").Label()
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        @*@f.FormGroup().DropDownListFor(m => m.LeagueId, Model.Leagues.Select(x => new SelectListItem { Value = x.LeagueId.ToString() })).OptionLabel("Select League").Prepend(Html.Bootstrap().ActionLink("New", "New", "League"))*@
+                                        @f.FormGroup().DropDownListFor(p => p.LeagueId, Model.Leagues).OptionLabel("Select League").Prepend(Html.Bootstrap().ActionLink("Create New League", "New", "League"))
+                                    </div>
+
+                                    <div class="col-md-6" style="margin-bottom:30px;">   
+                                        @f.FormGroup().TextBoxFor(p => p.Date).HtmlAttributes(new { id= "datetimepicker1" })                                                                 
+                                    </div>
+
+
+                                    <div class="form-submit">
+                                        <div class="col-md-6 ">
+                                            <button class="default-button submit btn-1 theme-background" type="submit">@buttonText</button>
+                                            @*@Html.Bootstrap().SubmitButton().Style(ButtonStyle.Success).ButtonBlock().Text(buttonText).AppendIcon(glyph).Class("default-button submit btn-1 theme-background")*@
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </form>
+                        </div>
+
+                    }
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+@section Scripts{
+
+
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/moment.min.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.js"></script>
+
+<script>
+        $("#datetimepicker1").datetimepicker();
+</script>
+  
+}
+

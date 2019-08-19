@@ -1,0 +1,168 @@
+﻿@{
+    ViewBag.Title = "Become A Member";
+    Layout = "~/Views/Shared/_Console.cshtml";
+    string roleName = "members";
+    string roleTitle = "Member";
+    string strCurrency = "KSh.";
+
+}
+
+<!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+
+        @*<ul class="breadcrumb">
+            <li class="item-home">
+
+                @Html.Bootstrap().ActionLink("Back", "Index", "ExclusiveTip").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+            </li>
+        </ul>*@
+
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<section>
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <!--Section Title Start-->
+                <h4 class="section-title border-top">
+                    <span class="rgb-label theme-background">
+                        <i class="lnr lnr-thumbs-up"></i>
+                    </span>
+                    Become a member and get our football betting tips ! All You Need is A Mobile Phone
+
+                    @Html.Bootstrap().ActionLinkButton("Become A "+ roleTitle, "New").RouteValues(new { roleName = roleName }).Class("btn-1 theme-background add-calender-btn").Style(ButtonStyle.Success).HtmlAttributes(new { style = "background-color:green;" })
+
+                </h4>
+                <!--Section Title End-->
+                <!--White Background Style Start-->
+                <div class="rgb-white-style margin-bottom">
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="col-md-8">
+                                <img src="@Url.Content("~/Content/coreAssets/images/ads/lipanampesa.png")" alt="" >
+                            </div>
+
+                            <div class="col-md-4">
+                                <img src="@Url.Content("~/Content/coreAssets/images/logo/shuaOddsLogoTrans.png")" alt="" style="max-height:274px">
+                            </div>
+
+
+                            </div>
+                    </div>
+
+                    <br /><hr />
+
+                    <div class="row">
+
+                        <div class="col-md-4 col-sm-6">
+                            <!--Featured News Small Start-->
+                            <div class="rgb-featured-news rgb-featured-news-small">
+                                <figure class="rgb-overlay">
+                                    <span class="rgb-label1">WEEKLY TIPS</span>
+                                    <img src="~/Content/coreAssets/images/ads/1.png" alt="">
+                                </figure>
+                                <!--Featured Contant start-->
+                                <div class="rgb-featured-contant">
+                                    <!--Featured Title start-->
+                                    <h6 class="featured-title"><a href="">1,000 (@strCurrency)</a></h6>
+                                    <!--Featured Title End-->
+
+                                </div>
+                                <!--Featured Contant End-->
+                            </div>
+                            <!--Featured News Small End-->
+                        </div>
+
+
+                        <div class="col-md-4 col-sm-6">
+                            <!--Featured News Small Start-->
+                            <div class="rgb-featured-news rgb-featured-news-small">
+                                <figure class="rgb-overlay">
+                                    <span class="rgb-label1">MONTHLY TIPS</span>
+                                    <img src="~/Content/coreAssets/images/ads/2.png" alt="">
+                                </figure>
+                                <!--Featured Contant start-->
+                                <div class="rgb-featured-contant">
+                                    <!--Featured Title start-->
+                                    <h6 class="featured-title"><a href="">3,000 (@strCurrency)</a></h6>
+                                    <!--Featured Title End-->
+
+                                </div>
+                                <!--Featured Contant End-->
+                            </div>
+                            <!--Featured News Small End-->
+                        </div>
+
+                        <div class="col-md-4 col-sm-6">
+                            <!--Featured News Small Start-->
+                            <div class="rgb-featured-news rgb-featured-news-small">
+                                <figure class="rgb-overlay">
+                                    <span class="rgb-label1">YEARLY TIPS</span>
+                                    <img src="~/Content/coreAssets/images/ads/3.png" alt="">
+                                </figure>
+                                <!--Featured Contant start-->
+                                <div class="rgb-featured-contant">
+                                    <!--Featured Title start-->
+                                    <h6 class="featured-title"><a href="">30,000 (@strCurrency)</a></h6>
+                                    <!--Featured Title End-->
+                                    @*<div class="featured-footer">
+                                        <!--Date Label start-->
+                                        <h3 style="text-decoration:underline; text-align:center;">On MTN</h3>
+                                        <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Dial *165#</span>
+                                        <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Select send money</span>
+                                        <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Enter number 0785965214</span>
+                                        <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Enter Reference of "Monthly Tip"</span>
+                                        <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Deposit 2,000 @strCurrency on our account</span>
+                                        <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Confirm and enter your Mobile Money PIN.</span>
+                                        <!--Date Label End-->
+                                    </div>
+
+                                    <div class="featured-footer">
+                                        <!--Date Label start-->
+                                        <h3 style="text-decoration:underline; text-align:center;">On Airtel</h3>
+                                        <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Dial *165#</span>
+                                        <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Select send money</span>
+                                        <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Enter number 0704229784</span>
+                                        <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Enter Reference of "Monthly Tip"</span>
+                                        <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Deposit 2,000 @strCurrency on our account</span>
+                                        <span class="rgb-date" style="font-size:16px; color:red;"><i class="lnr lnr-arrow-right"></i>Confirm and enter your Mobile Money PIN.</span>
+                                        <!--Date Label End-->
+                                    </div>*@
+                                </div>
+                                <!--Featured Contant End-->
+                            </div>
+                            <!--Featured News Small End-->
+                        </div>
+
+                    </div>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <span class="rgb-date"> <i class="lnr lnr-checkmark-circle" style="color:red;"></i>Wait for our reply with your unique password.</span>
+                            <span class="rgb-date"> <i class="lnr lnr-checkmark-circle" style="color:red;"></i>To access our Exclusive tips, just Log in with your phone number and unique code. </span>
+
+                            <h3 style="text-decoration:underline; text-align:center;">Disclaimer</h3>
+                            <h2 style="font-style:italic; text-align:center;">Betting is addictive and can be psychologically harmful.</h2>
+                        </div>
+                    </div>
+
+                </div>
+                <!--White Background Style End-->
+
+            </div>
+
+        </div>
+
+
+    </div>
+</section>

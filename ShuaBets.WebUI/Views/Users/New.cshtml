@@ -1,0 +1,175 @@
+﻿@model ShuaBets.WebUI.Models.Users.ProfileViewModel
+@{
+
+
+    string companyName = Settings.COMPANY_NAME;
+
+    string action, cancel_url, buttonText, instr, instr2, buttonText2, glyph;
+    bool isAdmin = PageData["isAdmin"];
+    bool isMember = PageData["isMember"];
+    string roleName = PageData["roleName"];
+    string roleTitle = PageData["roleTitle"];
+
+    if (!string.IsNullOrEmpty(Model.UserId)) {
+        cancel_url = Url.Action("Show", new { id = Model.User.DisplayId, roleName = roleName });
+        action = "Update";
+        buttonText = "Update Profile";
+        buttonText2 = "Update Profile";
+        instr = "Modify the details and click Update to apply changes";
+        instr2 = "Modify the details and click Update to apply changes";
+        glyph = "glyphicon glyphicon-thumbs-up";
+        ViewBag.Title = "Update Admin";
+    }
+    else {
+        cancel_url = Url.Action("Index");
+        action = "Create";
+        buttonText = "Create " + roleTitle;
+        buttonText2 = "Register";
+        instr = "Complete the form below and click Create to create a new " + roleTitle;
+        instr2 = "Complete the form below and click Register to become a new " + roleTitle + " of " + companyName;
+        glyph = "glyphicon glyphicon-plus";
+        ViewBag.Title = "Create " + roleTitle;
+    }
+
+    // If user access, change the return url
+    if (!isAdmin) {
+        cancel_url = Url.Action("Index", "Account");
+    }
+}
+
+ <!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+      
+            <h3>@ViewBag.Title</h3>
+      
+
+        <ul class="breadcrumb">
+            <li class="item-home">
+
+                    @Html.Bootstrap().ActionLink("Back", "Index", "Users").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+
+            </li>
+        </ul>
+
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<div class="rgb-content-wrap">
+    <!--Blog Detail Page Start-->
+    <section class="contactus-page">
+        <div class="container">
+
+            <h4 class="section-title border-top">
+                <span class="rgb-label theme-background">
+                    <i class="lnr lnr-users"></i>
+                </span>
+              
+              @instr
+
+            </h4>
+
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-8">
+
+                    @using (var f = Html.Bootstrap().Begin(new Form(action, "Users").FormMethod(
+                     FormMethod.Post)))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.UserId)
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="kode-comment-form contact-form">
+                            <form method="post" id="commentform" class="comment-form">
+                                <div class="kode-left-comment-sec">
+
+                                    <div class="col-md-6">
+                                       
+                                        <fieldset>
+                                            <legend>Personal details</legend>
+                                            <div class="alert alert-warning @(roleName == "admins" ? "hide" : "")">
+                                                Enter the name as it appears on the users passport
+                                            </div>
+                                            @f.FormGroup().DropDownListFor(m => m.TitleId, Model.Titles.Select(x => new SelectListItem { Value = x, Text = x })).OptionLabel("Select title")
+                                            @f.FormGroup().TextBoxFor(m => m.FirstName).HtmlAttributes(new { required = "This field is required" })
+                                            @f.FormGroup().TextBoxFor(m => m.LastName).HtmlAttributes(new { required = "This field is required" })
+                                        </fieldset>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <fieldset>
+                                            <legend>Contact details</legend>
+                                            @f.FormGroup().TextBoxFor(m => m.PhoneNumber).HtmlAttributes(new { required = "This field is required" })
+                                            @f.FormGroup().TextBoxFor(m => m.Email).HtmlAttributes(new { required = "This field is required" })
+                                        </fieldset>
+
+                                    </div>
+
+                                  
+                                        <div class="col-md-6">
+
+                                            <fieldset>
+                                                <legend>Activate user</legend>
+                                                <div class="alert alert-warning">
+                                                    Activating a user will grant them access to the system so they can use @Settings.COMPANY_NAME services.
+                                                </div>
+                                                <div class="form-group">
+                                                    @Html.EditorFor(m => m.Activate)
+                                                </div>
+                                            </fieldset>
+
+                                        </div>
+
+                                 
+                                    <div class="form-submit">
+                                        <div class="col-md-6 ">
+
+                                                <button class="default-button submit btn-1 theme-background" type="submit">@buttonText</button>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </form>
+                        </div>
+
+                    }
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+}
+
+@*@section Menu {
+    <li><a href="@cancel_url">Cancel <i class="fa fa-window-close"></i></a></li>
+}*@
+@*@section BreadcrumbLight {
+@if (isAdmin) {
+    <li>@Html.Bootstrap().ActionLink("Admin", "Index", "Admin")</li>
+    <li>@Html.ActionLink(roleTitle, "Index")</li>
+    if (!string.IsNullOrEmpty(Model.UserId)) {
+        <li>@Html.ActionLink(string.Format("{0} {1}", Model.FirstName, Model.LastName), "Show", new { id = Model.User.DisplayId, roleName = roleName })</li>
+        <li class="active">Edit @roleTitle</li>
+    }
+    else {
+        <li class="active">New @roleTitle</li>
+    }
+}
+else {
+    <li class="active">User Profile</li>
+}
+}*@

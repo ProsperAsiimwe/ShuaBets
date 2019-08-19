@@ -1,0 +1,100 @@
+﻿@model ShuaBets.WebUI.Models.Adverts.AdListViewModel
+
+@{
+    ViewBag.Title = "Adverts";
+    bool isAdmin = User.IsInRole("Admin") || User.IsInRole("Developer");
+}
+
+<!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+              
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<section>
+    <div class="container" style="overflow-x:scroll">
+        <!--Section Title Start-->
+        <h4 class="section-title border-top">
+            <span class="rgb-label theme-background">
+                <i class="lnr lnr-chart-bars"></i>
+            </span>
+           Upload Adverts To @Settings.COMPANY_NAME
+
+            @if (isAdmin)
+            {
+                @Html.Bootstrap().ActionLinkButton("New Advert", "New", "Advert").Class("btn-1 theme-background add-calender-btn").AppendIcon("fa fa-plus").HtmlAttributes(new { style = "background-color:green;color:white;" })
+
+            }
+            else
+            {
+
+            }
+
+
+        </h4>
+     
+        <div class="rgb-upcoming-fixture-wrap rgb-upcoming-fixture1 margin-bottom30">
+            <!--Upcoming Fixture Start-->
+            <table class="rgb-table-3 text-center table-responsive">
+                <tr class="table-head darkgray-bg-head">
+
+                    <th>
+                        <span>Date / Time</span>
+                    </th>
+
+                    <th>
+                        <span>Image</span>
+                    </th>
+
+                  
+                </tr>
+
+
+                @if (Model.Adverts.Count() > 0)
+                {
+                    foreach (var item in Model.Adverts)
+                    {
+
+                        <tr>
+                            <td>@item.UploadDate</td>
+                            <td><img src="@(string.IsNullOrEmpty(item.FileName)? "~/Content/coreAssets/images/logo/shuaOddsLogoTrans.png": @Url.Content(string.Format("~/Content/Adverts/{0}",item.FileName)))" alt="image" style="height:100px;max-width:100px;" /></td>
+                           
+                        </tr>
+
+                            <tr class="rgb-tab-match-results">
+                                <td colspan="6">
+
+                                    @if (isAdmin)
+                                    {
+                                        <div class="info-contant-footer">                                          
+                                            @Html.Bootstrap().ActionLinkButton("Delete", "Delete").RouteValues(new { id = item.AdvertId }).Style(ButtonStyle.Danger).Class("btn-1 btn-small theme-background").HtmlAttributes(new { style = "background-color:red;" })
+                                        </div>
+                                    }
+                                    else
+                                    {
+
+                                    }
+
+                                </td>
+                            </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6">There are no records matching your search criteria</td>
+                    </tr>
+                }
+
+            </table>
+
+
+            <!--Upcoming Fixture End-->
+        </div>
+
+
+    </div>
+</section>

@@ -1,0 +1,82 @@
+﻿@model ShuaBets.Domain.Entities.ApplicationUser
+@{
+    string roleName = PageData["roleName"];
+    string roleTitle = PageData["roleTitle"];
+    ViewBag.Title = "Delete " + roleTitle;
+    string[] roles = new ShuaBets.WebUI.Infrastructure.Helpers.UserHelper(Model).GetUserRoles();
+}
+
+ <!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+
+        <ul class="breadcrumb">
+            <li class="item-home">
+
+                @Html.Bootstrap().ActionLink("Back", "Index", "Users").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+            </li>
+
+            <li>@Html.Bootstrap().ActionLink("Edit Profile", "Edit").RouteValues(new { id = Model.DisplayId }).AppendIcon("glyphicon glyphicon-user").HtmlAttributes(new { title = "Edit", style = "color:white" })</li>
+            <li>@Html.Bootstrap().ActionLink("Reset password", "ResetPassword").RouteValues(new { id = Model.DisplayId }).AppendIcon("fa fa-lock").HtmlAttributes(new { title = "Reset", style = "color:white" })</li>
+            <li>@Html.Bootstrap().ActionLink("Delete User", "Delete").RouteValues(new { id = Model.DisplayId }).AppendIcon("fa fa-user-times").HtmlAttributes(new { title = "Delete", style = "color:white" })</li>
+
+
+        </ul>
+
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<div class="rgb-content-wrap">
+    <!--Blog Detail Page Start-->
+    <section class="contactus-page">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-8">
+
+                    <h5>Are you sure you want to do this?</h5>
+
+                    <hr />
+
+                    <div class="table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+
+                                    <th>Full Name</th>
+                                    <th>Email Address</th>
+                                    <th>Role</th>
+                                    <th>Delete?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>@Model.FullName</td>
+                                    <td>@Html.EmailLink(Model.Email)</td>
+                                    <td>@Html.ParseList(roles, "list-unstyled")</td>
+                                    <td>
+                                        @using (Html.BeginForm("Destroy", "Users", new { id = Model.DisplayId }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.Bootstrap().SubmitButton().Text("Delete User").Style(ButtonStyle.Danger).AppendIcon("fa fa-remove")
+                                        }
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+

@@ -1,0 +1,59 @@
+﻿@model ShuaBets.Domain.Entities.FreeTip
+@{
+    ViewBag.Title = "Terminate Tip";
+}
+
+ <!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+
+        <ul class="breadcrumb">
+            <li class="item-home">
+
+                @Html.Bootstrap().ActionLink("Back", "Index", "FreeTip").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+            </li>
+        </ul>
+
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<div class="rgb-content-wrap">
+    <!--Blog Detail Page Start-->
+    <section class="contactus-page">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-8">
+
+                    <h5>By doing this you'll terminate this tip and delete all it's associated data.</h5>
+
+                    <hr />
+                    <div class="panel-item-group">
+                        <div class="panel-item clearfix">
+                            <div class="col-sm-4 panel-item-label">Tip</div>
+                            <div class="col-sm-8">@Model.TipName</div>
+                        </div>
+                     
+                    
+                    </div>
+
+                    <br/><hr/>
+
+                    @using (Html.BeginForm("Destroy", "FreeTip", new { FreeTipId = Model.FreeTipId }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Bootstrap().SubmitButton().Text("Terminate Tip").Style(ButtonStyle.Danger).AppendIcon("fa fa-remove")
+                    }
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+

@@ -1,0 +1,61 @@
+﻿@model ShuaBets.Domain.Entities.Advert
+
+@{
+    ViewBag.Title = "Delete Adverts";
+    bool isAdmin = User.IsInRole("Admin") || User.IsInRole("Developer");
+}
+
+<!--Inner Banner Start-->
+<div class="sub-banner rgb-overlay theme-border">
+    <div class="container">
+        <h3>@ViewBag.Title</h3>
+
+        <ul class="breadcrumb">
+            <li class="item-home">
+
+                @Html.Bootstrap().ActionLink("Back", "Index", "Advert").HtmlAttributes(new { title = "Homepage", @class = "bread-link bread-home" })
+            </li>
+        </ul>
+
+    </div>
+</div>
+<!--Inner Banner End-->
+
+<div class="rgb-content-wrap">
+    <!--Blog Detail Page Start-->
+    <section class="contactus-page">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-8">
+
+                    <h5>By doing this you'll terminate Advert tip and delete all it's associated data.</h5>
+
+                    <hr />
+                    <div class="panel-item-group">
+                        <div class="panel-item clearfix">
+                            <div class="col-sm-4 panel-item-label">Photo</div>
+                            <div class="col-sm-8">@Model.AdvertId</div>
+                        </div>
+
+
+                    </div>
+
+                    <br /><hr />
+
+                    @using (Html.BeginForm("DeleteConfirmed", "Advert", new { id = Model.AdvertId }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Bootstrap().SubmitButton().Text("Terminate Photo").Style(ButtonStyle.Danger).AppendIcon("fa fa-remove")
+                    }
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
